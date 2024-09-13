@@ -233,4 +233,4 @@ def create_pdf(filepath, fn_staffs, an_staffs, allocation_date):
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True,host = '0.0.0.0')
