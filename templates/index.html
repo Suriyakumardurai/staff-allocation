@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Allocation</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="text-center">Staff Allocation</h1>
+
+    <!-- Display Flash Messages Here -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            {% for category, message in messages %}
+              <strong>{{ category }}:</strong> {{ message }}<br>
+            {% endfor %}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    <form action="/assign_staffs" method="POST">
+        <div class="mb-3">
+            <label for="fn_staffs" class="form-label">FN Staffs</label>
+            <input type="number" class="form-control" id="fn_staffs" name="fn_staffs" required>
+        </div>
+        <div class="mb-3">
+            <label for="an_staffs" class="form-label">AN Staffs</label>
+            <input type="number" class="form-control" id="an_staffs" name="an_staffs" required>
+        </div>
+        <div class="mb-3">
+            <label for="allocation_date" class="form-label">Allocation Date</label>
+            <input type="date" class="form-control" id="allocation_date" name="allocation_date" required>
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Assign Staffs</button>
+    </form>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
